@@ -50,13 +50,14 @@ app.post('/webhook/', function (req, res) {
             url: 'http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:95129&sensor=false',
             method: "POST",
         }, function (error, response, body){
-            console.log(response);
+          if (d.results[0].geometry !== null) {
+            latitude = d.results[0].geometry.location.lat;
+            longitude= d.results[0].geometry.location.lng;
+            sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude);
+          }
+          console.log(response);
         });
-
-            // if (d.results[0].geometry !== null) {
-            //   latitude = d.results[0].geometry.location.lat;
-            //   longitude= d.results[0].geometry.location.lng;
-            //   sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude);
+        
         sendTextMessage(sender, "Num")
         continue
       }
