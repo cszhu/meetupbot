@@ -52,7 +52,7 @@ app.post('/webhook/', function (req, res) {
             url: 'http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:'+text+'&sensor=false',
             method: "POST",
         }, function (error, response, body){
-          // var jsonBody = JSON.parse(response.body);
+          var jsonBody = JSON.parse(response.body);
           console.log(jsonBody);
           if (response.body.results !== null) {
             latitude = jsonBody.results[0].geometry.location.lat;
