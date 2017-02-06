@@ -37,7 +37,6 @@ function checkNumber(value) {
     return false;
 }
 
-
   app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
@@ -45,7 +44,7 @@ function checkNumber(value) {
       let sender = event.sender.id
       if (event.message && event.message.text) {
         let text = event.message.text
-        if (checkNumber(text)) {
+        /*if (checkNumber(text)) {
             // $.ajax({
             //    url : "http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:"+text+"&sensor=false",
             //    method: "POST",
@@ -55,10 +54,10 @@ function checkNumber(value) {
             //        console.log(sender, "Lat = "+latitude+"- Long = "+longitude);
             //    }
             // });
-            
+
             sendTextMessage(sender, "Num")
             continue
-        }
+        }*/
         sendTextMessage(sender, "Welcome to the Unofficial Meetup Messenger Bot! To begin, please enter a zip code where you would like to find some Meetups.");
       }
       if (event.postback) {
