@@ -30,6 +30,14 @@ app.get('/webhook/', function (req, res) {
     res.send('Error, wrong token')
 })
 
+function checkNumber(value) {
+    if ( value % 1 === 0 )
+    return true;
+    else
+    return false;
+}
+
+
   app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
     for (let i = 0; i < messaging_events.length; i++) {
@@ -37,7 +45,7 @@ app.get('/webhook/', function (req, res) {
       let sender = event.sender.id
       if (event.message && event.message.text) {
         let text = event.message.text
-        if (isNumeric(text)) {
+        if (checkNumber(text)) {
             $.ajax({
                url : "http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:"+text+"&sensor=false",
                method: "POST",
@@ -131,9 +139,6 @@ function sendGenericMessage(sender) {
     })
 }
 
-function isNumeric(num){
-    return !isNaN(num)
-}
 
 // Spin up the server
 app.listen(app.get('port'), function() {
