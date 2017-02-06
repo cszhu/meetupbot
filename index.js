@@ -43,6 +43,8 @@ app.post('/webhook/', function (req, res) {
   for (let i = 0; i < messaging_events.length; i++) {
     let event = req.body.entry[0].messaging[i]
     let sender = event.sender.id
+    var latitude;
+    var longitude;
     if (event.message && event.message.text) {
       let text = event.message.text
       if (checkNumber(text)) {
@@ -59,12 +61,11 @@ app.post('/webhook/', function (req, res) {
 
           if (response.body.results) {
             latitude = jsonBody.results[0].geometry.location.lat;
-            longitude= jsonBody.results[0].geometry.location.lng;
-            sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude);
+            longitude = jsonBody.results[0].geometry.location.lng;
           }
         });
-
-        sendTextMessage(sender, "Num")
+        console.log("Lat = "+latitude+"- Long = "+longitude);
+        sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude)
         continue
       }
       sendTextMessage(sender, "Welcome to the Unofficial Meetup Messenger Bot! To begin, please enter a zip code where you would like to find some Meetups.");
