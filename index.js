@@ -50,6 +50,7 @@ app.post('/webhook/', function (req, res) {
       if (checkNumber(text)) {
         request({
           url: 'http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:'+text+'&sensor=false',
+          key: 'AIzaSyA37mA3uweNrUGD159vlW06IZh7EZHOEaA',
           method: "POST",
         }, function (error, response, body){
           var jsonBody = JSON.parse(response.body);
