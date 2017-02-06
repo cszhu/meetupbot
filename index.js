@@ -46,29 +46,19 @@ app.post('/webhook/', function (req, res) {
     if (event.message && event.message.text) {
       let text = event.message.text
       if (checkNumber(text)) {
-        var options = {
-          hostname: 'http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:87987&sensor=false',
-          family:4,
-          method: 'POST'
-        };
-        var req = https.request(options, (res) => {
-          console.log('statusCode:', res.statusCode);
-          console.log('headers:', res.headers);
-
-          res.on('data', function(d) {
-            console.log(d);
-            if (d.results[0].geometry !== null) {
-              latitude = d.results[0].geometry.location.lat;
-              longitude= d.results[0].geometry.location.lng;
-              sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude);
-            }
-          });
+        request({
+            url: 'http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:95129&sensor=false',
+            method: "POST",
+            json: true,   // <--Very important!!!
+            body: myJSONObject
+        }, function (error, response, body){
+            console.log(response);
         });
-        req.on('error', (e) => {
-          console.error(e);
-        });
-        req.end();
 
+            // if (d.results[0].geometry !== null) {
+            //   latitude = d.results[0].geometry.location.lat;
+            //   longitude= d.results[0].geometry.location.lng;
+            //   sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude);
         sendTextMessage(sender, "Num")
         continue
       }
