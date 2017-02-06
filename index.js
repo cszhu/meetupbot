@@ -84,9 +84,9 @@ function findMeetups(lat, lng, sender) {
     var jsonBody = JSON.parse(response.body);
 
     // console.log(jsonBody);
-    var names[];
-    var links[];
-    var groups[];
+    var names = [];
+    var links = [];
+    var groups = [];
     for (var i = 0; i < 5; i++) {
       console.log(jsonBody[i].name);
       names[i] = jsonBody[i].name;
