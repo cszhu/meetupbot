@@ -131,33 +131,33 @@ function sendGenericMessage(sender, names, links, groups) {
         "elements": [
         {
           "title": "Classic White T-Shirt",
-          "image_url": "https://peterssendreceiveapp.ngrok.io/img/white-t-shirt.png",
+          "image_url": "",
           "subtitle": "100% Cotton, 200% Comfortable",
           "default_action": {
             "type": "web_url",
-            "url": "https://peterssendreceiveapp.ngrok.io/view?item=100",
+            "url": "https://meetup.com",
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
-            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+            "fallback_url": "https://meetup.com"                        
           },
           "buttons": [
           {
             "title": "Buy",
             "type": "web_url",
-            "url": "https://peterssendreceiveapp.ngrok.io/shop?item=100",
+            "url": "https://meetup.com",
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
-            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"                        
+            "fallback_url": "https://meetup.com"                        
           }
           ]                
         },
         {
           "title": "Classic Blue T-Shirt",
-          "image_url": "https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png",
+          "image_url": "",
           "subtitle": "100% Cotton, 200% Comfortable",
           "default_action": {
             "type": "web_url",
-            "url": "https://peterssendreceiveapp.ngrok.io/view?item=101",
+            "url": "https://meetup.com",
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
             "fallback_url": "https://meetup.com"                        
@@ -175,7 +175,7 @@ function sendGenericMessage(sender, names, links, groups) {
         },
         {
           "title": "Classic Black T-Shirt",
-          "image_url": "https://peterssendreceiveapp.ngrok.io/img/black-t-shirt.png",
+          "image_url": "",
           "subtitle": "100% Cotton, 200% Comfortable",
           "default_action": {
             "type": "web_url",
@@ -197,7 +197,7 @@ function sendGenericMessage(sender, names, links, groups) {
         },
         {
           "title": "Classic Gray T-Shirt",
-          "image_url": "https://peterssendreceiveapp.ngrok.io/img/gray-t-shirt.png",
+          "image_url": "",
           "subtitle": "100% Cotton, 200% Comfortable",
           "default_action": {
             "type": "web_url",
