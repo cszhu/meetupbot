@@ -54,11 +54,12 @@ app.post('/webhook/', function (req, res) {
           console.log(response);
           console.log("body");
           console.log(response.body);
+          var jsonBody = JSON.parse(response.body);
           console.log("results");
-          console.log(response.body.results);
+          console.log(jsonBody.results);
           console.log("results array");
-          console.log(response.body[0].results[0])
-          console.log(response.body.results[0].geometry)
+          console.log(jsonBody.results[0])
+          console.log(jsonBody.results[0].geometry)
 
 
           // if (response.body.results) {
