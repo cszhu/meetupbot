@@ -82,16 +82,21 @@ function findMeetups(lat, lng, sender) {
     method: "GET",
   }, function (error, response, body){
     var jsonBody = JSON.parse(response.body);
-    sendGenericMessage(sender);
 
     // console.log(jsonBody);
+    var names[];
+    var links[];
+    var groups[];
     for (var i = 0; i < 5; i++) {
       console.log(jsonBody[i].name);
+      names[i] = jsonBody[i].name;
       console.log(jsonBody[i].link);
-      console.log(jsonBody[i].venue);
-      console.log(jsonBody[i].venue);
-      console.log(jsonBody[i].group);
+      links[i] = jsonBody[i].link;
+      console.log(jsonBody[i].group.name);
+      groups[i] = jsonBody[i].group.name;
     }
+    sendGenericMessage(sender, names, links, groups);
+
     if (response.body.results !== null) {
     }
   });
@@ -116,7 +121,7 @@ function sendTextMessage(sender, text) {
   })
 }
 
-function sendGenericMessage(sender) {
+function sendGenericMessage(sender, names, links, groups) {
   let messageData = {
     "attachment": {
       "type": "template",
@@ -155,16 +160,16 @@ function sendGenericMessage(sender) {
             "url": "https://peterssendreceiveapp.ngrok.io/view?item=101",
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
-            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+            "fallback_url": "https://meetup.com"                        
           },
           "buttons": [
           {
             "title": "Buy",
             "type": "web_url",
-            "url": "https://peterssendreceiveapp.ngrok.io/shop?item=101",
+            "url": "https://meetup.com",
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
-            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"                        
+            "fallback_url": "https://meetup.com"                        
           }
           ]                
         },
@@ -174,19 +179,19 @@ function sendGenericMessage(sender) {
           "subtitle": "100% Cotton, 200% Comfortable",
           "default_action": {
             "type": "web_url",
-            "url": "https://peterssendreceiveapp.ngrok.io/view?item=102",
+            "url": "https://meetup.com",
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
-            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+            "fallback_url": "https://meetup.com"                        
           },
           "buttons": [
           {
             "title": "Buy",
             "type": "web_url",
-            "url": "https://peterssendreceiveapp.ngrok.io/shop?item=102",
+            "url": "https://meetup.com",
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
-            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"                        
+            "fallback_url": "https://meetup.com"                        
           }
           ]                
         },
@@ -196,19 +201,19 @@ function sendGenericMessage(sender) {
           "subtitle": "100% Cotton, 200% Comfortable",
           "default_action": {
             "type": "web_url",
-            "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
+            "url": "https://meetup.com",
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
-            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+            "fallback_url": "https://meetup.com"                        
           },
           "buttons": [
           {
             "title": "Buy",
             "type": "web_url",
-            "url": "https://peterssendreceiveapp.ngrok.io/shop?item=103",
+            "url": "https://meetup.com",
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
-            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"                        
+            "fallback_url": "https://meetup.com"                        
           }
           ]                
         }
