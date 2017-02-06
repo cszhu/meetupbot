@@ -47,7 +47,7 @@ app.post('/webhook/', function (req, res) {
     var longitude;
     if (event.message && event.message.text) {
       let text = event.message.text
-      if (checkNumber(text)) {
+      if (checkNumber(text) && text.length === 5) {
         request({
           url: 'http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:'+text+'&sensor=false',
           key: 'AIzaSyA37mA3uweNrUGD159vlW06IZh7EZHOEaA',
@@ -63,6 +63,8 @@ app.post('/webhook/', function (req, res) {
           }
         });
         continue
+      } else {
+        sendTextMessage(sender, "We're sorry, please enter a valid zip code.");
       }
       sendTextMessage(sender, "Welcome to the Unofficial Meetup Messenger Bot! To begin, please enter a zip code where you would like to find some Meetups.");
     }
