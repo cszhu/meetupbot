@@ -47,7 +47,8 @@ app.post('/webhook/', function (req, res) {
       let text = event.message.text
       if (checkNumber(text)) {
         var options = {
-          hostname: 'http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:'+text+'&sensor=false',
+          hostname: 'http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:87987&sensor=false',
+          family:4,
           method: 'POST'
         };
         var req = https.request(options, (res) => {
