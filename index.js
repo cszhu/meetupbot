@@ -49,8 +49,6 @@ app.post('/webhook/', function (req, res) {
         request({
             url: 'http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:95129&sensor=false',
             method: "POST",
-            json: true,   // <--Very important!!!
-            body: myJSONObject
         }, function (error, response, body){
             console.log(response);
         });
