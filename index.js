@@ -1,6 +1,4 @@
 'use strict'
-// EAAaXW0ZBr56cBAPsTb62sBrU4ZAJiS6TmxZAvrX5FkdXxPz6HEfooit6aUv1c4UNp63rbNayPzZBpE4TQwfwFZCuOHkQc1kZCr58QBNy7QODslH7goEXUXo21AU6xcelKkKbgIwZCJaUiWNvNmqWRs5zfv7UrMEHkJgLSM1BvXzXQZDZD
-
 
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -31,13 +29,6 @@ app.get('/webhook/', function (req, res) {
   res.send('Error, wrong token')
 })
 
-function checkNumber(value) {
-  if ( value % 1 === 0 )
-    return true;
-  else
-    return false;
-}
-
 app.post('/webhook/', function (req, res) {
   let messaging_events = req.body.entry[0].messaging
   for (let i = 0; i < messaging_events.length; i++) {
@@ -67,7 +58,6 @@ app.post('/webhook/', function (req, res) {
         sendTextMessage(sender, "We're sorry, please enter a valid zip code.");
       } else {
         sendTextMessage(sender, "Hi, I am the Unofficial Meetup Messenger Bot! To begin, please enter a zip code where you would like to find some Meetups.");
-
       }
     }
     if (event.postback) {
@@ -250,6 +240,12 @@ function sendGenericMessage(sender, names, links, groups, desc) {
   })
 }
 
+function checkNumber(value) {
+  if ( value % 1 === 0 )
+    return true;
+  else
+    return false;
+}
 
 // Spin up the server
 app.listen(app.get('port'), function() {
