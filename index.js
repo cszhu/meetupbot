@@ -87,6 +87,7 @@ function findMeetups(lat, lng, sender) {
     var names = [];
     var links = [];
     var groups = [];
+    var desc = [];
     for (var i = 0; i < 5; i++) {
       console.log(jsonBody[i].name);
       names[i] = jsonBody[i].name;
@@ -94,8 +95,10 @@ function findMeetups(lat, lng, sender) {
       links[i] = jsonBody[i].link;
       console.log(jsonBody[i].group.name);
       groups[i] = jsonBody[i].group.name;
+      console.log(jsonBody[i].description);
+      desc[i] = jsonBody[i].description.substring(0, 100) + '...';
     }
-    sendGenericMessage(sender, names, links, groups);
+    sendGenericMessage(sender, names, links, groups, desc);
 
     if (response.body.results !== null) {
     }
@@ -121,7 +124,7 @@ function sendTextMessage(sender, text) {
   })
 }
 
-function sendGenericMessage(sender, names, links, groups) {
+function sendGenericMessage(sender, names, links, groups, desc) {
   let messageData = {
     "attachment": {
       "type": "template",
@@ -130,21 +133,21 @@ function sendGenericMessage(sender, names, links, groups) {
         "top_element_style": "compact",
         "elements": [
         {
-          "title": "Classic White T-Shirt",
+          "title": names[0],
           "image_url": "",
-          "subtitle": "100% Cotton, 200% Comfortable",
+          "subtitle": desc[0],
           "default_action": {
             "type": "web_url",
-            "url": "https://meetup.com",
+            "url": links[0],
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
             "fallback_url": "https://meetup.com"                        
           },
           "buttons": [
           {
-            "title": "Buy",
+            "title": "Check It Out",
             "type": "web_url",
-            "url": "https://meetup.com",
+            "url": links[0],
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
             "fallback_url": "https://meetup.com"                        
@@ -152,21 +155,21 @@ function sendGenericMessage(sender, names, links, groups) {
           ]                
         },
         {
-          "title": "Classic Blue T-Shirt",
+          "title": names[1],
           "image_url": "",
-          "subtitle": "100% Cotton, 200% Comfortable",
+          "subtitle": desc[1],
           "default_action": {
             "type": "web_url",
-            "url": "https://meetup.com",
+            "url": links[1],
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
             "fallback_url": "https://meetup.com"                        
           },
           "buttons": [
           {
-            "title": "Buy",
+            "title": "Check It Out",
             "type": "web_url",
-            "url": "https://meetup.com",
+            "url": links[1],
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
             "fallback_url": "https://meetup.com"                        
@@ -174,21 +177,21 @@ function sendGenericMessage(sender, names, links, groups) {
           ]                
         },
         {
-          "title": "Classic Black T-Shirt",
+          "title": names[2],
           "image_url": "",
-          "subtitle": "100% Cotton, 200% Comfortable",
+          "subtitle": desc[2],
           "default_action": {
             "type": "web_url",
-            "url": "https://meetup.com",
+            "url": links[2],
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
             "fallback_url": "https://meetup.com"                        
           },
           "buttons": [
           {
-            "title": "Buy",
+            "title": "Check It Out",
             "type": "web_url",
-            "url": "https://meetup.com",
+            "url": links[2],
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
             "fallback_url": "https://meetup.com"                        
@@ -196,27 +199,27 @@ function sendGenericMessage(sender, names, links, groups) {
           ]                
         },
         {
-          "title": "Classic Gray T-Shirt",
+          "title": names[3],
           "image_url": "",
-          "subtitle": "100% Cotton, 200% Comfortable",
+          "subtitle": desc[3],
           "default_action": {
             "type": "web_url",
-            "url": "https://meetup.com",
+            "url": links[3],
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
             "fallback_url": "https://meetup.com"                        
           },
           "buttons": [
           {
-            "title": "Buy",
+            "title": "Check It Out",
             "type": "web_url",
-            "url": "https://meetup.com",
+            "url": links[3],
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
             "fallback_url": "https://meetup.com"                        
           }
           ]                
-        }
+        },
         ],
         "buttons": [
         {
