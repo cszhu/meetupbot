@@ -52,8 +52,11 @@ app.post('/webhook/', function (req, res) {
         }, function (error, response, body){
           console.log("1------1-1-11-1--1-----------")
           console.log(response);
-          console.log(response.body)
-          console.log(response.body[0].results)
+          console.log("body");
+          console.log(response.body);
+          console.log("results");
+          console.log(response.body.results);
+          console.log("results array");
           console.log(response.body[0].results[0])
           console.log(response.body.results[0].geometry)
 
