@@ -69,7 +69,7 @@ app.post('/webhook/', function (req, res) {
     }
     if (event.postback) {
       let text = JSON.stringify(event.postback)
-      sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+      sendTextMessage(sender, "Sorry, this feature has not been built yet. Thank you!")
       continue
     }
   }
@@ -184,7 +184,7 @@ function sendGenericMessage(sender, names, links, groups, desc) {
             "url": links[2],
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
-            "fallback_url": "https://meetup.com"                        
+            "fallback_url": links[2]                        
           },
           "buttons": [
           {
@@ -193,7 +193,7 @@ function sendGenericMessage(sender, names, links, groups, desc) {
             "url": links[2],
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
-            "fallback_url": "https://meetup.com"                        
+            "fallback_url": links[2]                        
           }
           ]                
         },
@@ -206,7 +206,7 @@ function sendGenericMessage(sender, names, links, groups, desc) {
             "url": links[3],
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
-            "fallback_url": "https://meetup.com"                        
+            "fallback_url": links[3]                        
           },
           "buttons": [
           {
@@ -215,7 +215,7 @@ function sendGenericMessage(sender, names, links, groups, desc) {
             "url": links[3],
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
-            "fallback_url": "https://meetup.com"                        
+            "fallback_url": links[3]                        
           }
           ]                
         },
