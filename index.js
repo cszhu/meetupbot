@@ -53,11 +53,12 @@ app.post('/webhook/', function (req, res) {
             method: "POST",
         }, function (error, response, body){
           var jsonBody = JSON.parse(response.body);
-          if (response.body.results) {
+          console.log(jsonBody);
+          if (response.body.results !== null) {
             latitude = jsonBody.results[0].geometry.location.lat;
             longitude = jsonBody.results[0].geometry.location.lng;
             console.log("sender: " + sender)
-            console.log("Lat = "+latitude+"- Long = "+longitude);
+            console.log("LATTTT = "+latitude+"- LONGGGG---------- = "+longitude);
             sendTextMessage(sender, "Latt = "+latitude+"- Longg = "+longitude)
           }
         });
