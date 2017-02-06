@@ -45,7 +45,7 @@ app.post('/webhook/', function (req, res) {
     let sender = event.sender.id
     var latitude;
     var longitude;
-    sendTextMessage(sender, "Welcome to the Unofficial Meetup Messenger Bot! To begin, please enter a zip code where you would like to find some Meetups.");
+    // sendTextMessage(sender, "Welcome to the Unofficial Meetup Messenger Bot! To begin, please enter a zip code where you would like to find some Meetups.");
     if (event.message && event.message.text) {
       let text = event.message.text
       if (checkNumber(text) && text.length === 5) {
