@@ -49,21 +49,19 @@ app.post('/webhook/', function (req, res) {
       let text = event.message.text
       if (checkNumber(text)) {
         request({
-            url: 'http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:95129&sensor=false',
+            url: 'http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:'+text+'&sensor=false',
             method: "POST",
         }, function (error, response, body){
-          var jsonBody = JSON.parse(response.body);
+          // var jsonBody = JSON.parse(response.body);
           console.log(jsonBody);
           if (response.body.results !== null) {
             latitude = jsonBody.results[0].geometry.location.lat;
             longitude = jsonBody.results[0].geometry.location.lng;
-            console.log("sender: " + sender)
             console.log("LATTTT = "+latitude+"- LONGGGG---------- = "+longitude);
-            sendTextMessage(sender, "Latt = "+latitude+"- Longg = "+longitude)
+            findMeetups(lat, lng);
+            sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude)
           }
         });
-        console.log("Lat = "+latitude+"- Long = "+longitude);
-        sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude);
         continue
       }
       sendTextMessage(sender, "Welcome to the Unofficial Meetup Messenger Bot! To begin, please enter a zip code where you would like to find some Meetups.");
@@ -77,7 +75,17 @@ app.post('/webhook/', function (req, res) {
   res.sendStatus(200)
 })
 
-
+function findMeetups(lat, lng) {
+  request({
+      url: 'http://api.meetup.com/find/events/?&sign=true&key=66577a535e5a78e405721501067238&lat=' + lat + '&lon=' + lng,
+      method: "GET",
+  }, function (error, response, body){
+    var jsonBody = JSON.parse(response.body);
+    console.log(jsonBody);
+    if (response.body.results !== null) {
+    }
+  });
+}
 
 function sendTextMessage(sender, text) {
   let messageData = { text:text }
