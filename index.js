@@ -37,11 +37,20 @@ app.get('/webhook/', function (req, res) {
       let sender = event.sender.id
       if (event.message && event.message.text) {
         let text = event.message.text
-        if (text === 'Generic') {
+        if (isNumeric(text)) {
+            $.ajax({
+               url : "http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:"+text+"&sensor=false",
+               method: "POST",
+               success:function(data){
+                   latitude = data.results[0].geometry.location.lat;
+                   longitude= data.results[0].geometry.location.lng;
+                   sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude);
+               }
+            });
             sendGenericMessage(sender)
             continue
         }
-        sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+        sendTextMessage(sender, "Welcome to the Unofficial Meetup Messenger Bot! To begin, please enter a zip code where you would like to find some Meetups.");
       }
       if (event.postback) {
         let text = JSON.stringify(event.postback)
@@ -122,6 +131,9 @@ function sendGenericMessage(sender) {
     })
 }
 
+function isNumeric(num){
+    return !isNaN(num)
+}
 
 // Spin up the server
 app.listen(app.get('port'), function() {
