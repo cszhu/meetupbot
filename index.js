@@ -58,9 +58,8 @@ app.post('/webhook/', function (req, res) {
           if (response.body.results !== null) {
             latitude = jsonBody.results[0].geometry.location.lat;
             longitude = jsonBody.results[0].geometry.location.lng;
-            console.log("LATTTT = "+latitude+"- LONGGGG---------- = "+longitude);
+            console.log("LAT = "+latitude+"- LNG---------- = "+longitude);
             findMeetups(latitude, longitude, sender);
-            sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude)
           }
         });
         continue
