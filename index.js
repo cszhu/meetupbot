@@ -44,10 +44,10 @@ app.get('/webhook/', function (req, res) {
                success:function(data){
                    latitude = data.results[0].geometry.location.lat;
                    longitude= data.results[0].geometry.location.lng;
-                   sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude);
+                   console.log(sender, "Lat = "+latitude+"- Long = "+longitude);
                }
             });
-            sendGenericMessage(sender)
+            sendTextMessage(sender, "Num")
             continue
         }
         sendTextMessage(sender, "Welcome to the Unofficial Meetup Messenger Bot! To begin, please enter a zip code where you would like to find some Meetups.");
