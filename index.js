@@ -77,13 +77,21 @@ app.post('/webhook/', function (req, res) {
 })
 
 function findMeetups(lat, lng, sender) {
-  sendGenericMessage(sender);
   request({
     url: 'http://api.meetup.com/find/events/?&sign=true&key=66577a535e5a78e405721501067238&lat=' + lat + '&lon=' + lng,
     method: "GET",
   }, function (error, response, body){
     var jsonBody = JSON.parse(response.body);
+    sendGenericMessage(sender);
+
     console.log(jsonBody);
+    for (var i = 0; i < 5; i++) {
+      console.log(jsonBody[i].name);
+      console.log(jsonBody[i].link);
+      console.log(jsonBody[i].venue.city);
+      console.log(jsonBody[i].venue.state);
+      console.log(jsonBody[i].group.name);
+    }
     if (response.body.results !== null) {
     }
   });
