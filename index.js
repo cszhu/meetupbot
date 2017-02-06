@@ -5,6 +5,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
+const $ = require('jquery')
 const app = express()
 
 const token = process.env.FB_PAGE_ACCESS_TOKEN;
