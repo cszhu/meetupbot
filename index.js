@@ -140,7 +140,7 @@ function sendGenericMessage(sender, names, links, groups, desc) {
             "url": links[0],
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
-            "fallback_url": "https://meetup.com"                        
+            "fallback_url": links[0]                        
           },
           "buttons": [
           {
@@ -149,7 +149,7 @@ function sendGenericMessage(sender, names, links, groups, desc) {
             "url": links[0],
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
-            "fallback_url": "https://meetup.com"                        
+            "fallback_url": links[0]                        
           }
           ]                
         },
@@ -162,7 +162,7 @@ function sendGenericMessage(sender, names, links, groups, desc) {
             "url": links[1],
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
-            "fallback_url": "https://meetup.com"                        
+            "fallback_url": links[1]                        
           },
           "buttons": [
           {
@@ -171,7 +171,7 @@ function sendGenericMessage(sender, names, links, groups, desc) {
             "url": links[1],
             "messenger_extensions": true,
             "webview_height_ratio": "tall",
-            "fallback_url": "https://meetup.com"                        
+            "fallback_url": links[1]                        
           }
           ]                
         },
