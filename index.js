@@ -8,7 +8,7 @@ const request = require('request')
 const https = require('https')
 const app = express()
 
-const token = process.env.FB_PAGE_ACCESS_TOKEN;
+const token = 'EAAaXW0ZBr56cBAPsTb62sBrU4ZAJiS6TmxZAvrX5FkdXxPz6HEfooit6aUv1c4UNp63rbNayPzZBpE4TQwfwFZCuOHkQc1kZCr58QBNy7QODslH7goEXUXo21AU6xcelKkKbgIwZCJaUiWNvNmqWRs5zfv7UrMEHkJgLSM1BvXzXQZDZD';
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -62,6 +62,8 @@ app.post('/webhook/', function (req, res) {
           if (response.body.results) {
             latitude = jsonBody.results[0].geometry.location.lat;
             longitude = jsonBody.results[0].geometry.location.lng;
+            console.log("Lat = "+latitude+"- Long = "+longitude);
+            sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude)
           }
         });
         console.log("Lat = "+latitude+"- Long = "+longitude);
