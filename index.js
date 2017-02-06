@@ -52,22 +52,17 @@ app.post('/webhook/', function (req, res) {
             url: 'http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:95129&sensor=false',
             method: "POST",
         }, function (error, response, body){
-          console.log("body");
-          console.log(response.body);
           var jsonBody = JSON.parse(response.body);
-
-          console.log("results array");
-          console.log(jsonBody.results[0])
-
           if (response.body.results) {
             latitude = jsonBody.results[0].geometry.location.lat;
             longitude = jsonBody.results[0].geometry.location.lng;
+            console.log("sender: " + sender)
             console.log("Lat = "+latitude+"- Long = "+longitude);
-            sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude)
+            sendTextMessage(sender, "Latt = "+latitude+"- Longg = "+longitude)
           }
         });
         console.log("Lat = "+latitude+"- Long = "+longitude);
-        sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude)
+        sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude);
         continue
       }
       sendTextMessage(sender, "Welcome to the Unofficial Meetup Messenger Bot! To begin, please enter a zip code where you would like to find some Meetups.");
