@@ -49,9 +49,11 @@ function checkNumber(value) {
                 url : "http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:"+text+"&sensor=false",
                 method: "POST",
                 success:function(data){
+                  if (data.results[0].geometry !== null) {
                     latitude = data.results[0].geometry.location.lat;
                     longitude= data.results[0].geometry.location.lng;
                     sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude);
+                  }
                 },
                 error: function(data) {
                     sendTextMessage(sender, "Failed")
