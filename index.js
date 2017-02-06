@@ -84,13 +84,13 @@ function findMeetups(lat, lng, sender) {
     var jsonBody = JSON.parse(response.body);
     sendGenericMessage(sender);
 
-    console.log(jsonBody);
+    // console.log(jsonBody);
     for (var i = 0; i < 5; i++) {
       console.log(jsonBody[i].name);
       console.log(jsonBody[i].link);
-      console.log(jsonBody[i].venue.city);
-      console.log(jsonBody[i].venue.state);
-      console.log(jsonBody[i].group.name);
+      console.log(jsonBody[i].venue);
+      console.log(jsonBody[i].venue);
+      console.log(jsonBody[i].group);
     }
     if (response.body.results !== null) {
     }
