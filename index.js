@@ -96,11 +96,6 @@ function findMeetups(lat, lng, sender) {
       console.log(jsonBody[i].group.name);
       groups[i] = jsonBody[i].group.name;
       console.log(jsonBody[i].description);
-      if (jsonBody[i].description !== null) {
-        desc[i] = jsonBody[i].description.substring(0, 100) + '...';
-      } else {
-        desc[i] = "No description found";
-      }
     }
     sendGenericMessage(sender, names, links, groups, desc);
 
@@ -139,7 +134,7 @@ function sendGenericMessage(sender, names, links, groups, desc) {
         {
           "title": names[0],
           "image_url": "",
-          "subtitle": desc[0],
+          "subtitle": groups[0],
           "default_action": {
             "type": "web_url",
             "url": links[0],
@@ -161,7 +156,7 @@ function sendGenericMessage(sender, names, links, groups, desc) {
         {
           "title": names[1],
           "image_url": "",
-          "subtitle": desc[1],
+          "subtitle": groups[1],
           "default_action": {
             "type": "web_url",
             "url": links[1],
@@ -183,7 +178,7 @@ function sendGenericMessage(sender, names, links, groups, desc) {
         {
           "title": names[2],
           "image_url": "",
-          "subtitle": desc[2],
+          "subtitle": groups[2],
           "default_action": {
             "type": "web_url",
             "url": links[2],
@@ -205,7 +200,7 @@ function sendGenericMessage(sender, names, links, groups, desc) {
         {
           "title": names[3],
           "image_url": "",
-          "subtitle": desc[3],
+          "subtitle": groups[3],
           "default_action": {
             "type": "web_url",
             "url": links[3],
