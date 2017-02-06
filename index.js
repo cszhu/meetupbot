@@ -50,13 +50,12 @@ app.post('/webhook/', function (req, res) {
           hostname: 'http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:'+text+'&sensor=false',
           method: 'POST'
         };
-
         var req = https.request(options, (res) => {
           console.log('statusCode:', res.statusCode);
           console.log('headers:', res.headers);
 
-          res.on('data', (d) => {
-            sendTextMessage(sender, d)
+          res.on('data', function(d) {
+            console.log(d);
             if (d.results[0].geometry !== null) {
               latitude = d.results[0].geometry.location.lat;
               longitude= d.results[0].geometry.location.lng;
@@ -64,7 +63,6 @@ app.post('/webhook/', function (req, res) {
             }
           });
         });
-
         req.on('error', (e) => {
           console.error(e);
         });
