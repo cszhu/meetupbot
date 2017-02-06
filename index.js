@@ -44,20 +44,23 @@ function checkNumber(value) {
       let sender = event.sender.id
       if (event.message && event.message.text) {
         let text = event.message.text
-        /*if (checkNumber(text)) {
-            // $.ajax({
-            //    url : "http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:"+text+"&sensor=false",
-            //    method: "POST",
-            //    success:function(data){
-            //        latitude = data.results[0].geometry.location.lat;
-            //        longitude= data.results[0].geometry.location.lng;
-            //        console.log(sender, "Lat = "+latitude+"- Long = "+longitude);
-            //    }
-            // });
+        if (checkNumber(text)) {
+             $.ajax({
+                url : "http://maps.googleapis.com/maps/api/geocode/json?&components=postal_code:"+text+"&sensor=false",
+                method: "POST",
+                success:function(data){
+                    latitude = data.results[0].geometry.location.lat;
+                    longitude= data.results[0].geometry.location.lng;
+                    sendTextMessage(sender, "Lat = "+latitude+"- Long = "+longitude);
+                },
+                error: function(data) {
+                    sendTextMessage(sender, "Failed")
+                }
+             });
 
             sendTextMessage(sender, "Num")
             continue
-        }*/
+        }
         sendTextMessage(sender, "Welcome to the Unofficial Meetup Messenger Bot! To begin, please enter a zip code where you would like to find some Meetups.");
       }
       if (event.postback) {
