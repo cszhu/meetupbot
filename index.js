@@ -96,7 +96,11 @@ function findMeetups(lat, lng, sender) {
       console.log(jsonBody[i].group.name);
       groups[i] = jsonBody[i].group.name;
       console.log(jsonBody[i].description);
-      desc[i] = jsonBody[i].description.substring(0, 100) + '...';
+      if (jsonBody[i].description !== null) {
+        desc[i] = jsonBody[i].description.substring(0, 100) + '...';
+      } else {
+        desc[i] = "No description found";
+      }
     }
     sendGenericMessage(sender, names, links, groups, desc);
 
